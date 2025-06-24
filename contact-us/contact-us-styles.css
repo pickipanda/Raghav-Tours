@@ -1,0 +1,203 @@
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  color: #111;
+  background: #fff;
+  line-height: 1.6;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.3rem 3rem;
+    border-bottom: 1px solid #ccc;
+    flex-wrap: wrap;
+}
+
+header h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 800;
+    font-size: 1.5rem;
+}
+
+nav a {
+    margin: 0.5rem 0.5rem;
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid #007bff;
+    color: #007bff;
+    background: transparent;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.btn.primary {
+    background: #007bff;
+    color: #fff;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  height: 80px;
+  width: auto;
+}
+
+
+.contact-section {
+  padding: 60px 40px;
+}
+
+.contact-intro {
+  max-width: 800px;
+  margin-bottom: 40px;
+}
+
+.contact-intro small {
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #888;
+}
+
+.contact-intro h1 {
+  font-size: 32px;
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+.contact-intro.center {
+  text-align: center;
+  margin: 0 auto 40px;
+}
+
+.contact-boxes {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.contact-box {
+  flex: 1;
+  min-width: 260px;
+  background: #fff;
+  border-radius: 6px;
+  padding: 20px;
+  border: 1px solid #eee;
+}
+
+.icon {
+  font-size: 24px;
+  color: #de5d1a;
+  margin-bottom: 10px;
+}
+
+.contact-box h3 {
+  font-size: 18px;
+  margin: 10px 0 5px;
+}
+
+.contact-box p {
+  font-size: 14px;
+  color: #444;
+}
+
+footer.footer {
+  padding: 30px 40px;
+  border-top: 1px solid #ccc;
+  text-align: center;
+  background: #fff;
+}
+
+.footer-links {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  margin: 0 10px;
+  color: #333;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+/* ----------------------------------
+   Responsive Design
+---------------------------------- */
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+
+  .contact-boxes {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .contact-section {
+    padding: 40px 20px;
+  }
+
+  .contact-intro h1 {
+    font-size: 24px;
+  }
+
+  .btn {
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 20px;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  .contact-box {
+    padding: 15px;
+  }
+
+  .contact-box h3 {
+    font-size: 16px;
+  }
+
+  .footer-links a {
+    display: block;
+    margin: 5px 0;
+  }
+
+  .footer {
+    padding: 20px;
+  }
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ayodhya Travel Booking</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="book-tour-styles.css">
+</head>
+<body>
+  <header>
+    <div class="logo">RaghavTours</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#packages">Packages</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Explore the Spiritual Heritage of Ayodhya!</h1>
+  </section>
+
+  <section class="form-section">
+    <h2>Book Your Travel Package</h2>
+    <form>
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone" required>
+
+      <label for="nights">Number of Nights</label>
+      <select id="nights" name="nights">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select>
+
+      <label for="places">Places to Visit</label>
+      <select id="places" name="places" multiple>
+        <option value="ramjanmbhoomi">Ram Janmabhoomi</option>
+        <option value="hanumangarhi">Hanuman Garhi</option>
+        <option value="kanakbhawan">Kanak Bhawan</option>
+        <option value="saryuriver">Saryu River</option>
+        <option value="nageshwarnath">Nageshwarnath Temple</option>
+      </select>
+
+      <label for="plan">Travel Plan</label>
+      <select id="plan" name="plan">
+        <option value="budget">Budget Plan</option>
+        <option value="standard">Standard Plan</option>
+        <option value="premium">Premium Plan</option>
+        <option value="pilgrimage">Pilgrimage Special</option>
+        <option value="family">Family Package</option>
+      </select>
+
+      <label for="addons">Add-ons (optional)</label>
+      <select id="addons" name="addons" multiple>
+        <option value="guide">Local Guide</option>
+        <option value="darshan">Temple Darshan Pass</option>
+        <option value="boat">Boat Ride on Saryu</option>
+        <option value="pickup">Hotel Pickup/Drop</option>
+      </select>
+
+      <label for="date">Preferred Travel Date</label>
+      <input type="date" id="date" name="date">
+
+      <button type="submit">Book Now</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>Contact us at info@raghagtours.com | +91-9876543210</p>
+    <p>&copy; 2025 RaghavTours. All rights reserved.</p>
+  </footer>
+</body>
+</html>
