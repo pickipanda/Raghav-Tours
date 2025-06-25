@@ -13,19 +13,25 @@
   <body>
     <header>
       <div class="logo-container">
-        <a href="index.html"><img src="logo.png" alt="RaghavTours Logo" class="logo" /></a>
+        <a href="index.html"
+          ><img src="logo.png" alt="RaghavTours Logo" class="logo"
+        /></a>
       </div>
       <nav>
         <a href="about-me\about-me.html">About Us</a>
         <a href="#attractions">Attractions</a>
         <a href="contact-us\contact-us.html">Contact</a>
-        
+
         <a href="#" class="btn primary">Explore Now</a>
       </nav>
     </header>
 
     <section class="section hero">
-      <img src="refer\main-temple.webp" alt="Ayodhya Temple" />
+      <img
+        src="refer\main-temple.webp"
+        alt="Ayodhya Temple"
+        class="main-temp"
+      />
       <div class="hero-text">
         <h2>Discover the Spirit of Ayodhya</h2>
         <p>
@@ -34,7 +40,9 @@
           sites, and spiritual traditions with our expert guidance.
         </p>
         <div class="cta-buttons">
-          <a href="book-tour\book-tour.html" class="btn primary">Explore Tours</a>
+          <a href="book-tour\book-tour.html" class="btn primary"
+            >Explore Tours</a
+          >
           <a href="#" class="btn">Learn More</a>
         </div>
       </div>
@@ -56,6 +64,7 @@
         <img
           src="refer\main-tourist-photo-self.webp"
           alt="Tourists in Ayodhya"
+          class="grid-places-img"
         />
       </div>
 
@@ -64,6 +73,7 @@
           <img
             src="refer\ram-mandir-a-spiritual-epicenter.webp"
             alt="Ram Mandir"
+            class="grid-places-img"
           />
           <h3>Ram Mandir: A Spiritual Epicenter</h3>
           <p>
@@ -75,6 +85,7 @@
           <img
             src="refer\hunuman mandir.webp"
             alt="Hanuman Mandir"
+            class="grid-places-img"
           />
           <h3>Hanuman Mandir: Abode of Devotion</h3>
           <p>
@@ -86,6 +97,7 @@
           <img
             src="refer\sarayu river.webp"
             alt="Sarayu River"
+            class="grid-places-img"
           />
           <h3>Sarayu River: The Sacred Waters</h3>
           <p>
@@ -97,6 +109,7 @@
           <img
             src="refer\kanak bhavan.webp"
             alt="Kanak Bhavan"
+            class="grid-places-img"
           />
           <h3>Kanak Bhavan: A Royal Abode</h3>
           <p>
@@ -113,6 +126,7 @@
           <img
             src="refer\spiritual morning.webp"
             alt="Spiritual Morning"
+            class="grid-places-img"
           />
           <h3>Spiritual Morning in Ayodhya</h3>
           <p>
@@ -124,6 +138,7 @@
           <img
             src="refer\hanuman garhi.webp"
             alt="Hanuman Garhi"
+            class="grid-places-img"
           />
           <h3>Hanuman Garhi Exploration</h3>
           <p>
@@ -135,6 +150,7 @@
           <img
             src="refer\kanak bhavan divine art.webp"
             alt="Kanak Bhavan"
+            class="grid-places-img"
           />
           <h3>Kanak Bhavan’s Divine Art</h3>
           <p>
@@ -146,6 +162,7 @@
           <img
             src="refer\ram mandir visit.webp"
             alt="Ram Mandir Visit"
+            class="grid-places-img"
           />
           <h3>Ram Mandir Visit</h3>
           <p>
@@ -156,8 +173,8 @@
     </section>
 
     <section class="section">
-      <div class="text-img">
-        <div>
+      <div class="heritage-layout">
+        <div class="heritage-text">
           <h2>Cultural Heritage of Ayodhya</h2>
           <p>
             Explore the rich traditions and spiritual legacy of Ayodhya, home to
@@ -165,7 +182,7 @@
             festivals, age-old customs, and local crafts that define this
             historic city.
           </p>
-          <div class="stats">
+          <div class="stats-vertical">
             <div class="stat">1500 ₹<br />Average Tour Cost</div>
             <div class="stat">3000 ₹<br />Starting Price</div>
             <div class="stat">500 ₹<br />Per Person</div>
@@ -173,8 +190,9 @@
           </div>
         </div>
         <img
-          src="refer\ayodhya cultural street.webp"
+          src="refer/ayodhya cultural street.webp"
           alt="Ayodhya Cultural Street"
+          class="heritage-image"
         />
       </div>
     </section>
@@ -185,15 +203,16 @@
           <div>📧</div>
           <h3>Get in Touch</h3>
           <p>
-            Contact us for personalized travel experiences.<br> Email or visit us in
-            Daulatpur, Raibareli Road, Ayodhya.
+            Contact us for personalized travel experiences.<br />
+            Email or visit us in Daulatpur, Raibareli Road, Ayodhya.
           </p>
         </div>
         <div class="contact">
           <div>📞</div>
           <h3>Call Us</h3>
           <p>
-            +91-88513 18990 <br> +91-85889 38647
+            +91-88513 18990 <br />
+            +91-85889 38647
           </p>
         </div>
         <div class="contact">
@@ -261,5 +280,16 @@
     </section>
 
     <footer>© 2025 Raghav Tours and Travels. All rights reserved.</footer>
+
+    <script>
+      window.addEventListener("scroll", function () {
+        const header = document.querySelector("header");
+        if (window.scrollY > 60) {
+          header.classList.add("shrink");
+        } else {
+          header.classList.remove("shrink");
+        }
+      });
+    </script>
   </body>
 </html>
