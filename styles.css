@@ -104,6 +104,7 @@ nav a {
 }
 
 .hero {
+    margin-top: 15px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -414,3 +415,110 @@ footer {
     transform: scale(1.05);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
+
+/* Animated gradient background */
+      body {
+        background: linear-gradient(120deg, #f8fafc 0%, #e0e7ff 100%);
+        min-height: 100vh;
+        position: relative;
+        overflow-x: hidden;
+        animation: bgmove 12s ease-in-out infinite alternate;
+      }
+      @keyframes bgmove {
+        0% { background-position: 0% 50%; }
+        100% { background-position: 100% 50%; }
+      }
+      /* Hero overlay */
+      .hero {
+        position: relative;
+        background: rgba(255,255,255,0.7);
+        border-radius: 18px;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+        overflow: hidden;
+        margin-bottom: 2rem;
+        z-index: 1;
+      }
+      .hero::before {
+        content: '';
+        position: absolute;
+        left: 0; top: 0; right: 0; bottom: 0;
+        background: linear-gradient(120deg, #e0e7ff 0%, #fff 100%);
+        opacity: 0.25;
+        z-index: 0;
+      }
+      .hero-text {
+        position: relative;
+        z-index: 1;
+        animation: fadeInUp 1.2s cubic-bezier(.23,1.01,.32,1) both;
+      }
+      .hero img {
+        box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+        animation: fadeIn 1.2s cubic-bezier(.23,1.01,.32,1) both;
+      }
+      @keyframes fadeInUp {
+        0% { opacity: 0; transform: translateY(40px); }
+        100% { opacity: 1; transform: none; }
+      }
+      @keyframes fadeIn {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+      }
+      /* Glassmorphism button */
+      .btn.primary {
+        background: rgba(0,123,255,0.85);
+        color: #fff;
+        box-shadow: 0 2px 16px rgba(0,123,255,0.10);
+        backdrop-filter: blur(2px);
+        border: none;
+      }
+      .btn.primary:hover {
+        background: rgba(0,86,179,0.95);
+        color: #fff;
+      }
+      /* Section fade-in */
+      .section {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.8s cubic-bezier(.23,1.01,.32,1), transform 0.8s cubic-bezier(.23,1.01,.32,1);
+      }
+      .section.visible {
+        opacity: 1;
+        transform: none;
+      }
+      /* Scroll to top button */
+      #scrollTopBtn {
+        position: fixed;
+        bottom: 32px;
+        right: 32px;
+        width: 48px;
+        height: 48px;
+        background: rgba(0,123,255,0.85);
+        color: #fff;
+        border: none;
+        border-radius: 50%;
+        box-shadow: 0 2px 12px rgba(0,123,255,0.18);
+        cursor: pointer;
+        font-size: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s;
+        z-index: 2000;
+      }
+      #scrollTopBtn.show {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      /* Minimal testimonial card effect */
+      .testimonial-card {
+        border: 1px solid #e0e7ff;
+        background: rgba(255,255,255,0.85);
+        box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+      .testimonial-card:hover {
+        transform: translateY(-6px) scale(1.03);
+        box-shadow: 0 8px 32px rgba(0,123,255,0.10);
+      }

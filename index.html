@@ -9,6 +9,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+    
   </head>
   <body>
     <header>
@@ -22,7 +23,7 @@
         <a href="#attractions">Attractions</a>
         <a href="contact-us\contact-us.html">Contact</a>
 
-        <a href="#" class="btn primary">Explore Now</a>
+        <a href="packages\packages-index.html" class="btn primary">Packages</a>
       </nav>
     </header>
 
@@ -280,8 +281,9 @@
     </section>
 
     <footer>© 2025 Raghav Tours and Travels. All rights reserved.</footer>
-
+    <button id="scrollTopBtn" title="Back to top">↑</button>
     <script>
+      // Header shrink
       window.addEventListener("scroll", function () {
         const header = document.querySelector("header");
         if (window.scrollY > 60) {
@@ -289,6 +291,29 @@
         } else {
           header.classList.remove("shrink");
         }
+      });
+      // Section fade-in on scroll
+      function revealSections() {
+        document.querySelectorAll('.section').forEach(section => {
+          const rect = section.getBoundingClientRect();
+          if (rect.top < window.innerHeight - 80) {
+            section.classList.add('visible');
+          }
+        });
+      }
+      window.addEventListener('scroll', revealSections);
+      window.addEventListener('DOMContentLoaded', revealSections);
+      // Scroll to top button
+      const scrollBtn = document.getElementById('scrollTopBtn');
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 200) {
+          scrollBtn.classList.add('show');
+        } else {
+          scrollBtn.classList.remove('show');
+        }
+      });
+      scrollBtn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       });
     </script>
   </body>
