@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>RaghavTours</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&family=Open+Sans:wght@400;600&family=Cinzel:wght@700;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="about-me-styles.css" />
 </head>
 <body>
@@ -11,14 +12,15 @@
   <!-- Header -->
   <header>
       <div class="logo-container">
-        <a href="..\index.html"><img src="..\logo.png" alt="RaghavTours Logo" class="logo" /></a>
+        <a href="../index.html"><img src="../logo.png" alt="RaghavTours Logo" class="logo" /></a>
+        <span class="brand-name">RAGHAV TRAVELS</span>
       </div>
-      <nav>
-        <a href="..\about-me\about-me.html">About Us</a>
-        <a href="#attractions">Attractions</a>
-        <a href="..\contact-us\contact-us.html">Contact</a>
-        
-        <a href="#" class="btn primary">Explore Now</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">&#9776;</button>
+      <nav id="mainNav">
+        <a href="../about-me/about-me.html" class="active">About Us</a>
+        <a href="../attractions/attractions.html">Attractions</a>
+        <a href="../contact-us/contact-us.html">Contact</a>
+        <a href="../Packages/packages-index.html" class="btn primary">Packages</a>
       </nav>
     </header>
 
@@ -80,6 +82,9 @@
   </section>
 
   <script>
+      const navToggle = document.getElementById('navToggle');
+      const mainNav = document.getElementById('mainNav');
+      navToggle.addEventListener('click', () => mainNav.classList.toggle('open'));
       window.addEventListener("scroll", function () {
         const header = document.querySelector("header");
         if (window.scrollY > 60) {

@@ -5,11 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Raghav Tours and Travels</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&family=Open+Sans&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&family=Open+Sans:wght@400;600&family=Cinzel:wght@700;900&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
-    
   </head>
   <body>
     <header>
@@ -17,19 +16,20 @@
         <a href="index.html"
           ><img src="logo.png" alt="RaghavTours Logo" class="logo"
         /></a>
+        <span class="brand-name">RAGHAV TRAVELS</span>
       </div>
-      <nav>
-        <a href="about-me\about-me.html">About Us</a>
-        <a href="#attractions">Attractions</a>
-        <a href="contact-us\contact-us.html">Contact</a>
-
-        <a href="packages\packages-index.html" class="btn primary">Packages</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">&#9776;</button>
+      <nav id="mainNav">
+        <a href="about-me/about-me.html">About Us</a>
+        <a href="attractions/attractions.html">Attractions</a>
+        <a href="contact-us/contact-us.html">Contact</a>
+        <a href="Packages/packages-index.html" class="btn primary">Packages</a>
       </nav>
     </header>
 
     <section class="section hero">
       <img
-        src="refer\main-temple.webp"
+        src="refer/main-temple.webp"
         alt="Ayodhya Temple"
         class="main-temp"
       />
@@ -41,10 +41,8 @@
           sites, and spiritual traditions with our expert guidance.
         </p>
         <div class="cta-buttons">
-          <a href="book-tour\book-tour.html" class="btn primary"
-            >Explore Tours</a
-          >
-          <a href="#" class="btn">Learn More</a>
+          <a href="book-tour/book-tour.html" class="btn primary">Explore Tours</a>
+          <a href="attractions/attractions.html" class="btn">Learn More</a>
         </div>
       </div>
     </section>
@@ -54,7 +52,7 @@
       <p>
         Raghav Tours and Travels has been dedicated to providing authentic and
         enriching travel experiences in Ayodhya. Our passionate team is
-        committed to showcasing the city’s rich cultural heritage, iconic
+        committed to showcasing the city's rich cultural heritage, iconic
         landmarks like Ram Mandir and Hanuman Mandir, and offering personalized
         guidance to make every trip memorable.
       </p>
@@ -63,7 +61,7 @@
     <section class="section">
       <div class="centered-image">
         <img
-          src="refer\main-tourist-photo-self.webp"
+          src="refer/main-tourist-photo-self.webp"
           alt="Tourists in Ayodhya"
           class="grid-places-img"
         />
@@ -72,7 +70,7 @@
       <div class="grid">
         <div class="card">
           <img
-            src="refer\ram-mandir-a-spiritual-epicenter.webp"
+            src="refer/ram-mandir-a-spiritual-epicenter.webp"
             alt="Ram Mandir"
             class="grid-places-img"
           />
@@ -84,7 +82,7 @@
         </div>
         <div class="card">
           <img
-            src="refer\hunuman mandir.webp"
+            src="refer/hunuman mandir.webp"
             alt="Hanuman Mandir"
             class="grid-places-img"
           />
@@ -96,7 +94,7 @@
         </div>
         <div class="card">
           <img
-            src="refer\sarayu river.webp"
+            src="refer/sarayu river.webp"
             alt="Sarayu River"
             class="grid-places-img"
           />
@@ -108,7 +106,7 @@
         </div>
         <div class="card">
           <img
-            src="refer\kanak bhavan.webp"
+            src="refer/kanak bhavan.webp"
             alt="Kanak Bhavan"
             class="grid-places-img"
           />
@@ -125,7 +123,7 @@
       <div class="grid">
         <div class="card">
           <img
-            src="refer\spiritual morning.webp"
+            src="refer/spiritual morning.webp"
             alt="Spiritual Morning"
             class="grid-places-img"
           />
@@ -137,7 +135,7 @@
         </div>
         <div class="card">
           <img
-            src="refer\hanuman garhi.webp"
+            src="refer/hanuman garhi.webp"
             alt="Hanuman Garhi"
             class="grid-places-img"
           />
@@ -149,11 +147,11 @@
         </div>
         <div class="card">
           <img
-            src="refer\kanak bhavan divine art.webp"
+            src="refer/kanak bhavan divine art.webp"
             alt="Kanak Bhavan"
             class="grid-places-img"
           />
-          <h3>Kanak Bhavan’s Divine Art</h3>
+          <h3>Kanak Bhavan's Divine Art</h3>
           <p>
             Admire the exquisite architecture and divine idols at this temple
             dedicated to Lord Rama and Sita.
@@ -161,7 +159,7 @@
         </div>
         <div class="card">
           <img
-            src="refer\ram mandir visit.webp"
+            src="refer/ram mandir visit.webp"
             alt="Ram Mandir Visit"
             class="grid-places-img"
           />
@@ -199,31 +197,74 @@
     </section>
 
     <section class="section" id="contact">
-      <div class="grid">
-        <div class="contact">
-          <div>📧</div>
-          <h3>Get in Touch</h3>
-          <p>
-            Contact us for personalized travel experiences.<br />
-            Email or visit us in Daulatpur, Raibareli Road, Ayodhya.
-          </p>
+      <h2 class="section-title">Get In Touch</h2>
+      <div class="contact-enquiry-layout">
+        <div class="contact-info-group">
+          <div class="contact">
+            <div>📧</div>
+            <h3>Get in Touch</h3>
+            <p>
+              Contact us for personalized travel experiences.<br />
+              Email or visit us in Daulatpur, Raibareli Road, Ayodhya.
+            </p>
+          </div>
+          <div class="contact">
+            <div>📞</div>
+            <h3>Call Us</h3>
+            <p>
+              +91-88513 18990 <br />
+              +91-85889 38647
+            </p>
+          </div>
+          <div class="contact">
+            <div>📍</div>
+            <h3>Visit Us</h3>
+            <p>
+              Our office is located at Daulatpur, Raibareli Road, Ayodhya-224127
+            </p>
+          </div>
         </div>
-        <div class="contact">
-          <div>📞</div>
-          <h3>Call Us</h3>
-          <p>
-            +91-88513 18990 <br />
-            +91-85889 38647
-          </p>
-        </div>
-        <div class="contact">
-          <div>📍</div>
-          <h3>Visit Us</h3>
-          <p>
-            Our office is located at Daulatpur, Raibareli Road, Ayodhya-224127
-          </p>
+
+        <!-- Enquiry Form -->
+        <div class="enquiry-form-container">
+          <h3 class="enquiry-title">Quick Enquiry</h3>
+          <p class="enquiry-subtitle">Send us a message and we'll get back to you soon.</p>
+          <form class="enquiry-form" onsubmit="handleEnquiry(event)">
+            <div class="form-group">
+              <label for="enq-name">Full Name</label>
+              <input type="text" id="enq-name" name="name" placeholder="Your name" required />
+            </div>
+            <div class="form-group">
+              <label for="enq-phone">Phone Number</label>
+              <input type="tel" id="enq-phone" name="phone" placeholder="+91 XXXXX XXXXX" required />
+            </div>
+            <div class="form-group">
+              <label for="enq-email">Email Address</label>
+              <input type="email" id="enq-email" name="email" placeholder="you@email.com" />
+            </div>
+            <div class="form-group">
+              <label for="enq-tour">Tour Interest</label>
+              <select id="enq-tour" name="tour">
+                <option value="">Select a tour...</option>
+                <option value="ram-mandir">Ram Mandir Darshan</option>
+                <option value="spiritual-morning">Spiritual Morning Tour</option>
+                <option value="cultural">Cultural Heritage Tour</option>
+                <option value="full-ayodhya">Full Ayodhya Exploration</option>
+                <option value="custom">Custom Tour</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="enq-message">Message</label>
+              <textarea id="enq-message" name="message" placeholder="Tell us your travel plans..." rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn primary enquiry-submit">Send Enquiry</button>
+            <div id="enquiry-success" class="enquiry-success" style="display:none;">
+              ✅ Thank you! We'll contact you soon.
+            </div>
+          </form>
         </div>
       </div>
+
       <div style="margin-top: 2rem">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3623.219325169067!2d82.132!3d26.789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399a071fef8e8ab1%3A0xf3c5809e9f34a78!2sAyodhya!5e0!3m2!1sen!2sin!4v1596014745740!5m2!1sen!2sin"
@@ -283,6 +324,13 @@
     <footer>© 2025 Raghav Tours and Travels. All rights reserved.</footer>
     <button id="scrollTopBtn" title="Back to top">↑</button>
     <script>
+      // Hamburger nav toggle
+      const navToggle = document.getElementById('navToggle');
+      const mainNav = document.getElementById('mainNav');
+      navToggle.addEventListener('click', function() {
+        mainNav.classList.toggle('open');
+      });
+
       // Header shrink
       window.addEventListener("scroll", function () {
         const header = document.querySelector("header");
@@ -315,6 +363,16 @@
       scrollBtn.addEventListener('click', function() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
+
+      // Enquiry form
+      function handleEnquiry(e) {
+        e.preventDefault();
+        document.getElementById('enquiry-success').style.display = 'block';
+        e.target.reset();
+        setTimeout(() => {
+          document.getElementById('enquiry-success').style.display = 'none';
+        }, 4000);
+      }
     </script>
   </body>
 </html>

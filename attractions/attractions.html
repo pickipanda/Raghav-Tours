@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Attractions – Raghav Tours and Travels</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&family=Open+Sans:wght@400;600&family=Cinzel:wght@700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="attractions-styles.css" />
+</head>
+<body>
+
+  <header>
+    <div class="logo-container">
+      <a href="../index.html"><img src="../logo.png" alt="RaghavTours Logo" class="logo" /></a>
+      <span class="brand-name">RAGHAV TRAVELS</span>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">&#9776;</button>
+    <nav id="mainNav">
+      <a href="../about-me/about-me.html">About Us</a>
+      <a href="attractions.html" class="active">Attractions</a>
+      <a href="../contact-us/contact-us.html">Contact</a>
+      <a href="../Packages/packages-index.html" class="btn primary">Packages</a>
+    </nav>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="attract-hero">
+    <div class="attract-hero-content">
+      <small class="eyebrow">EXPLORE AYODHYA</small>
+      <h1>Top Attractions</h1>
+      <p>Discover the sacred sites, heritage landmarks, and spiritual gems that make Ayodhya one of India's most revered destinations.</p>
+    </div>
+  </section>
+
+  <!-- Filter Tabs -->
+  <section class="filter-section">
+    <div class="filter-tabs">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="temple">Temples</button>
+      <button class="filter-btn" data-filter="nature">Nature & Ghats</button>
+      <button class="filter-btn" data-filter="heritage">Heritage</button>
+    </div>
+  </section>
+
+  <!-- Attractions Grid -->
+  <section class="attractions-section">
+    <div class="attractions-grid" id="attractionsGrid">
+
+      <!-- Ram Mandir -->
+      <div class="attraction-card" data-category="temple">
+        <div class="card-img-wrap">
+          <img src="../refer/ram-mandir-a-spiritual-epicenter.webp" alt="Ram Mandir" />
+          <span class="card-badge">Temple</span>
+        </div>
+        <div class="card-body">
+          <h2>Ram Mandir</h2>
+          <p class="card-tagline">A Spiritual Epicenter</p>
+          <p>The newly built Ram Mandir at Ram Janmabhoomi is one of the most significant religious structures in India. Standing tall with Nagara-style architecture, it draws millions of devotees and visitors every year to experience its divine presence.</p>
+          <div class="card-meta">
+            <span>🕐 Open: 7:00 AM – 11:00 PM</span>
+            <span>📍 Ram Janmabhoomi, Ayodhya</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hanuman Garhi -->
+      <div class="attraction-card" data-category="temple">
+        <div class="card-img-wrap">
+          <img src="../refer/hanuman garhi.webp" alt="Hanuman Garhi" />
+          <span class="card-badge">Temple</span>
+        </div>
+        <div class="card-body">
+          <h2>Hanuman Garhi</h2>
+          <p class="card-tagline">76-step Climb to Devotion</p>
+          <p>Perched atop a hill, Hanuman Garhi is a fortress-temple dedicated to Lord Hanuman. Climb its 76 iconic steps to reach the sanctum and enjoy panoramic views of Ayodhya. Considered the guardian of the city, the temple is a must-visit.</p>
+          <div class="card-meta">
+            <span>🕐 Open: 5:00 AM – 10:00 PM</span>
+            <span>📍 Hanuman Garhi Road, Ayodhya</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hanuman Mandir -->
+      <div class="attraction-card" data-category="temple">
+        <div class="card-img-wrap">
+          <img src="../refer/hunuman mandir.webp" alt="Hanuman Mandir" />
+          <span class="card-badge">Temple</span>
+        </div>
+        <div class="card-body">
+          <h2>Hanuman Mandir</h2>
+          <p class="card-tagline">Abode of Devotion</p>
+          <p>A vibrant hub of spiritual activity where devotees gather daily to offer prayers and seek blessings. The temple is alive with the sound of bhajans and the fragrance of incense, creating an unforgettable spiritual atmosphere.</p>
+          <div class="card-meta">
+            <span>🕐 Open: 6:00 AM – 9:00 PM</span>
+            <span>📍 Ayodhya City Centre</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kanak Bhavan -->
+      <div class="attraction-card" data-category="temple">
+        <div class="card-img-wrap">
+          <img src="../refer/kanak bhavan.webp" alt="Kanak Bhavan" />
+          <span class="card-badge">Temple</span>
+        </div>
+        <div class="card-body">
+          <h2>Kanak Bhavan</h2>
+          <p class="card-tagline">A Royal Abode</p>
+          <p>Known for its exquisite golden architecture and divine idols of Lord Rama and Sita, Kanak Bhavan is one of the most beautiful temples in Ayodhya. Its ornate interiors and peaceful ambiance offer a glimpse into royal heritage.</p>
+          <div class="card-meta">
+            <span>🕐 Open: 8:00 AM – 12:00 PM, 4:00 PM – 9:00 PM</span>
+            <span>📍 Near Ram Janmabhoomi</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kanak Bhavan Divine Art -->
+      <div class="attraction-card" data-category="heritage">
+        <div class="card-img-wrap">
+          <img src="../refer/kanak bhavan divine art.webp" alt="Kanak Bhavan Art" />
+          <span class="card-badge">Heritage</span>
+        </div>
+        <div class="card-body">
+          <h2>Kanak Bhavan — Divine Art</h2>
+          <p class="card-tagline">Architectural Masterpiece</p>
+          <p>Step inside Kanak Bhavan to admire breathtaking frescoes, intricate carvings, and golden ornaments adorning every wall. The temple's art narrates the timeless story of Rama and Sita through colour and craftsmanship.</p>
+          <div class="card-meta">
+            <span>🎨 Architecture: Awadhi Style</span>
+            <span>📍 Ayodhya</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sarayu River -->
+      <div class="attraction-card" data-category="nature">
+        <div class="card-img-wrap">
+          <img src="../refer/sarayu river.webp" alt="Sarayu River" />
+          <span class="card-badge">Nature</span>
+        </div>
+        <div class="card-body">
+          <h2>Sarayu River</h2>
+          <p class="card-tagline">The Sacred Waters</p>
+          <p>The Sarayu is the life-giving river of Ayodhya, mentioned in the Ramayana as the sacred river of Lord Rama. Evening aarti on its ghats is a mesmerising experience — golden lamps reflecting on the flowing waters create an otherworldly sight.</p>
+          <div class="card-meta">
+            <span>🕐 Aarti: 6:30 AM & 6:30 PM</span>
+            <span>📍 Ram Ki Paidi Ghat</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Spiritual Morning -->
+      <div class="attraction-card" data-category="nature">
+        <div class="card-img-wrap">
+          <img src="../refer/spiritual morning.webp" alt="Spiritual Morning" />
+          <span class="card-badge">Nature</span>
+        </div>
+        <div class="card-body">
+          <h2>Spiritual Morning Walk</h2>
+          <p class="card-tagline">Dawn at the Ghat</p>
+          <p>Begin your day with a peaceful morning walk along the Sarayu ghats. Watch pilgrims take holy dips, witness priests perform dawn rituals, and soak in the tranquil sunrise over the sacred waters. A deeply calming and spiritual experience.</p>
+          <div class="card-meta">
+            <span>🌅 Best Time: 5:30 AM – 7:30 AM</span>
+            <span>📍 Sarayu Ghats, Ayodhya</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ram Mandir Visit -->
+      <div class="attraction-card" data-category="temple">
+        <div class="card-img-wrap">
+          <img src="../refer/ram mandir visit.webp" alt="Ram Mandir Visit" />
+          <span class="card-badge">Temple</span>
+        </div>
+        <div class="card-body">
+          <h2>Ram Mandir Darshan</h2>
+          <p class="card-tagline">The Grand Pilgrimage</p>
+          <p>A guided visit to Ram Mandir with our expert team ensures you don't miss any important corners of this magnificent temple. We help you navigate queues, explain architectural details, and make your darshan meaningful and memorable.</p>
+          <div class="card-meta">
+            <span>🕐 Darshan: 7:00 AM – 11:00 PM</span>
+            <span>📍 Ram Janmabhoomi Marg</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ayodhya Cultural Street -->
+      <div class="attraction-card" data-category="heritage">
+        <div class="card-img-wrap">
+          <img src="../refer/ayodhya cultural street.webp" alt="Ayodhya Cultural Street" />
+          <span class="card-badge">Heritage</span>
+        </div>
+        <div class="card-body">
+          <h2>Ayodhya Cultural Street</h2>
+          <p class="card-tagline">Living Heritage</p>
+          <p>Stroll through Ayodhya's vibrant cultural streets lined with traditional shops selling handcrafted artefacts, religious souvenirs, street food, and folk art. The streets come alive with music and colour, especially during festivals.</p>
+          <div class="card-meta">
+            <span>🛍️ Best for: Shopping & Local Food</span>
+            <span>📍 Near Ram Janmabhoomi</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <p class="no-results" id="noResults" style="display:none;">No attractions found for this filter.</p>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="cta-banner">
+    <div class="cta-banner-inner">
+      <h2>Ready to Explore Ayodhya?</h2>
+      <p>Book a guided tour and let our experts make your journey unforgettable.</p>
+      <a href="../book-tour/book-tour.html" class="btn primary">Book a Tour</a>
+      <a href="../contact-us/contact-us.html" class="btn">Contact Us</a>
+    </div>
+  </section>
+
+  <footer>© 2025 Raghav Tours and Travels. All rights reserved.</footer>
+  <button id="scrollTopBtn" title="Back to top">↑</button>
+
+  <script>
+    // Hamburger
+    const navToggle = document.getElementById('navToggle');
+    const mainNav = document.getElementById('mainNav');
+    navToggle.addEventListener('click', () => mainNav.classList.toggle('open'));
+
+    // Header shrink
+    window.addEventListener('scroll', function () {
+      document.querySelector('header').classList.toggle('shrink', window.scrollY > 60);
+    });
+
+    // Scroll to top
+    const scrollBtn = document.getElementById('scrollTopBtn');
+    window.addEventListener('scroll', () => scrollBtn.classList.toggle('show', window.scrollY > 200));
+    scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Filter
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.attraction-card');
+    const noResults = document.getElementById('noResults');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        let visible = 0;
+        cards.forEach(card => {
+          const match = filter === 'all' || card.dataset.category === filter;
+          card.style.display = match ? '' : 'none';
+          if (match) visible++;
+        });
+        noResults.style.display = visible === 0 ? 'block' : 'none';
+      });
+    });
+
+    // Scroll reveal
+    function revealCards() {
+      document.querySelectorAll('.attraction-card, .attract-hero, .cta-banner').forEach(el => {
+        if (el.getBoundingClientRect().top < window.innerHeight - 60) {
+          el.classList.add('visible');
+        }
+      });
+    }
+    window.addEventListener('scroll', revealCards);
+    window.addEventListener('DOMContentLoaded', revealCards);
+  </script>
+</body>
+</html>

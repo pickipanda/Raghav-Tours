@@ -3,90 +3,197 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ayodhya Travel Booking</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="book-tour-styles.css">
+  <title>Book a Tour — Raghav Tours & Travels</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&family=Open+Sans:wght@400;600&family=Cinzel:wght@700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="book-tour-styles.css" />
 </head>
 <body>
+
+  <!-- Header -->
   <header>
-      <div class="logo-container">
-        <a href="..\index.html"><img src="..\logo.png" alt="RaghavTours Logo" class="logo" /></a>
+    <div class="logo-container">
+      <a href="../index.html"><img src="../logo.png" alt="RaghavTours Logo" class="logo" /></a>
+      <span class="brand-name">RAGHAV TRAVELS</span>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">&#9776;</button>
+    <nav id="mainNav">
+      <a href="../about-me/about-me.html">About Us</a>
+      <a href="../attractions/attractions.html">Attractions</a>
+      <a href="../contact-us/contact-us.html">Contact</a>
+      <a href="../Packages/packages-index.html" class="btn primary">Packages</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="book-hero">
+    <div class="book-hero-overlay"></div>
+    <img src="../refer/ram-mandir-a-spiritual-epicenter.webp" alt="Ram Mandir Ayodhya" class="book-hero-img" />
+    <div class="book-hero-text">
+      <small class="eyebrow">START YOUR JOURNEY</small>
+      <h1>Book Your Ayodhya Tour</h1>
+      <p>Fill in your details below and we'll plan your perfect pilgrimage</p>
+    </div>
+  </section>
+
+  <!-- Main Content: Form + Sidebar -->
+  <main class="booking-main">
+
+    <!-- Left: Booking Form -->
+    <div class="booking-form-wrap">
+      <h2 class="form-title">Tour Booking Details</h2>
+      <p class="form-subtitle">Complete the form below to reserve your spot. Our team will confirm your booking within 24 hours.</p>
+
+      <form class="booking-form" onsubmit="handleBooking(event)">
+
+        <!-- Personal Info -->
+        <div class="form-section-title"><i class="fa-solid fa-user"></i> Personal Information</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Full Name *</label>
+            <input type="text" id="name" name="name" placeholder="Your full name" required />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number *</label>
+            <input type="tel" id="phone" name="phone" placeholder="+91 XXXXX XXXXX" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address *</label>
+          <input type="email" id="email" name="email" placeholder="you@email.com" required />
+        </div>
+
+        <!-- Tour Details -->
+        <div class="form-section-title" style="margin-top:1.5rem"><i class="fa-solid fa-map-location-dot"></i> Tour Details</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="date">Preferred Travel Date *</label>
+            <input type="date" id="date" name="date" required />
+          </div>
+          <div class="form-group">
+            <label for="persons">Number of Persons *</label>
+            <input type="number" id="persons" name="persons" placeholder="e.g. 4" min="1" max="50" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nights">Number of Nights</label>
+            <select id="nights" name="nights">
+              <option value="0">Day Trip (no stay)</option>
+              <option value="1">1 Night</option>
+              <option value="2">2 Nights</option>
+              <option value="3">3 Nights</option>
+              <option value="4">4 Nights</option>
+              <option value="5">5+ Nights</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="plan">Travel Package *</label>
+            <select id="plan" name="plan" required>
+              <option value="">Select a package...</option>
+              <option value="ram-mandir">Ram Mandir Darshan — ₹1,500/person</option>
+              <option value="spiritual-morning">Spiritual Morning Tour — ₹1,200/person</option>
+              <option value="cultural">Cultural Heritage Tour — ₹2,000/person</option>
+              <option value="full-ayodhya">Full Ayodhya Exploration — ₹4,500/person</option>
+              <option value="family">Family Pilgrimage Package — ₹3,000/person</option>
+              <option value="custom">Custom Tour — Price on Request</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Places to Visit -->
+        <div class="form-group">
+          <label>Places to Visit <span class="label-hint">(select all that interest you)</span></label>
+          <div class="checkbox-grid">
+            <label class="check-item"><input type="checkbox" name="places" value="ramjanmbhoomi" /> Ram Janmabhoomi</label>
+            <label class="check-item"><input type="checkbox" name="places" value="hanumangarhi" /> Hanuman Garhi</label>
+            <label class="check-item"><input type="checkbox" name="places" value="kanakbhawan" /> Kanak Bhawan</label>
+            <label class="check-item"><input type="checkbox" name="places" value="sarayuriver" /> Sarayu River Ghats</label>
+            <label class="check-item"><input type="checkbox" name="places" value="nageshwarnath" /> Nageshwarnath Temple</label>
+            <label class="check-item"><input type="checkbox" name="places" value="guptarghat" /> Guptar Ghat</label>
+            <label class="check-item"><input type="checkbox" name="places" value="sitakirasoi" /> Sita Ki Rasoi</label>
+            <label class="check-item"><input type="checkbox" name="places" value="maniparvat" /> Mani Parvat</label>
+          </div>
+        </div>
+
+        <!-- Add-ons -->
+        <div class="form-group">
+          <label>Add-ons <span class="label-hint">(optional extras)</span></label>
+          <div class="checkbox-grid">
+            <label class="check-item"><input type="checkbox" name="addons" value="guide" /> <i class="fa-solid fa-person-walking-with-cane"></i> Local Guide</label>
+            <label class="check-item"><input type="checkbox" name="addons" value="darshan" /> <i class="fa-solid fa-ticket"></i> Temple Darshan Pass</label>
+            <label class="check-item"><input type="checkbox" name="addons" value="boat" /> <i class="fa-solid fa-sailboat"></i> Boat Ride on Sarayu</label>
+            <label class="check-item"><input type="checkbox" name="addons" value="pickup" /> <i class="fa-solid fa-car"></i> Hotel Pickup / Drop</label>
+          </div>
+        </div>
+
+        <!-- Special Requests -->
+        <div class="form-group">
+          <label for="message">Special Requests or Notes</label>
+          <textarea id="message" name="message" rows="4" placeholder="Any dietary requirements, accessibility needs, or special occasions we should know about..."></textarea>
+        </div>
+
+        <button type="submit" class="btn primary submit-btn">
+          <i class="fa-solid fa-circle-check"></i> Confirm Booking
+        </button>
+        <div id="booking-success" class="booking-success" style="display:none;">
+          <i class="fa-solid fa-circle-check"></i> Booking submitted! We'll confirm your tour within 24 hours.
+        </div>
+      </form>
+    </div>
+
+    <!-- Right: Sidebar -->
+    <aside class="booking-sidebar">
+      <div class="sidebar-card highlight-card">
+        <img src="../refer/main-tourist-photo-self.webp" alt="Raghav Tours Experience" />
+        <div class="highlight-body">
+          <h3>Why Travel with Us?</h3>
+          <ul>
+            <li><i class="fa-solid fa-star"></i> Expert local guides with 10+ years experience</li>
+            <li><i class="fa-solid fa-star"></i> Personalised itineraries for every traveller</li>
+            <li><i class="fa-solid fa-star"></i> Best-price guarantee on all packages</li>
+            <li><i class="fa-solid fa-star"></i> 24/7 support during your trip</li>
+          </ul>
+        </div>
       </div>
-      <nav>
-        <a href="..\about-me\about-me.html">About Us</a>
-        <a href="#attractions">Attractions</a>
-        <a href="..\contact-us\contact-us.html">Contact</a>
-        
-        <a href="#" class="btn primary">Explore Now</a>
-      </nav>
-    </header>
 
-  <section class="hero">
-    <h1>Explore the Spiritual Heritage of Ayodhya!</h1>
-  </section>
+      <div class="sidebar-card contact-card">
+        <h3><i class="fa-solid fa-headset"></i> Need Help Booking?</h3>
+        <p>Our team is happy to assist you choose the right package.</p>
+        <a href="tel:+918851318990" class="contact-link"><i class="fa-solid fa-phone"></i> +91-88513 18990</a>
+        <a href="mailto:info@raghavgroups.com" class="contact-link"><i class="fa-solid fa-envelope"></i> info@raghavgroups.com</a>
+        <a href="../contact-us/contact-us.html" class="btn" style="width:100%;text-align:center;margin-top:0.8rem;">Send an Enquiry</a>
+      </div>
 
-  <section class="form-section">
-    <h2>Book Your Travel Package</h2>
-    <form>
-      <label for="name">Full Name</label>
-      <input type="text" id="name" name="name" required>
+      <div class="sidebar-card glimpse-card">
+        <h3>A Glimpse of Ayodhya</h3>
+        <div class="glimpse-grid">
+          <img src="../refer/ram mandir visit.webp" alt="Ram Mandir" />
+          <img src="../refer/hanuman garhi.webp" alt="Hanuman Garhi" />
+          <img src="../refer/sarayu river.webp" alt="Sarayu River" />
+          <img src="../refer/kanak bhavan.webp" alt="Kanak Bhawan" />
+        </div>
+      </div>
+    </aside>
+  </main>
 
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" required>
+  <footer class="site-footer">© 2025 Raghav Tours and Travels. All rights reserved.</footer>
+  <button id="scrollTopBtn" title="Back to top">↑</button>
 
-      <label for="phone">Phone Number</label>
-      <input type="tel" id="phone" name="phone" required>
-
-      <label for="nights">Number of Nights</label>
-      <select id="nights" name="nights">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-      </select>
-
-      <label for="places">Places to Visit</label>
-      <select id="places" name="places" multiple>
-        <option value="ramjanmbhoomi">Ram Janmabhoomi</option>
-        <option value="hanumangarhi">Hanuman Garhi</option>
-        <option value="kanakbhawan">Kanak Bhawan</option>
-        <option value="saryuriver">Saryu River</option>
-        <option value="nageshwarnath">Nageshwarnath Temple</option>
-      </select>
-
-      <label for="plan">Travel Plan</label>
-      <select id="plan" name="plan">
-        <option value="budget">Budget Plan</option>
-        <option value="standard">Standard Plan</option>
-        <option value="premium">Premium Plan</option>
-        <option value="pilgrimage">Pilgrimage Special</option>
-        <option value="family">Family Package</option>
-      </select>
-
-      <label for="addons">Add-ons (optional)</label>
-      <select id="addons" name="addons" multiple>
-        <option value="guide">Local Guide</option>
-        <option value="darshan">Temple Darshan Pass</option>
-        <option value="boat">Boat Ride on Saryu</option>
-        <option value="pickup">Hotel Pickup/Drop</option>
-      </select>
-
-      <label for="date">Preferred Travel Date</label>
-      <input type="date" id="date" name="date">
-
-      <button type="submit">Book Now</button>
-    </form>
-  </section>
-
-  <footer>
-    <p>Contact us at info@raghagtours.com | +91-9876543210</p>
-    <p>&copy; 2025 RaghavTours. All rights reserved.</p>
-  </footer>
+  <script>
+    const navToggle = document.getElementById('navToggle');
+    const mainNav = document.getElementById('mainNav');
+    navToggle.addEventListener('click', () => mainNav.classList.toggle('open'));
+    window.addEventListener("scroll", () => document.querySelector("header").classList.toggle("shrink", window.scrollY > 60));
+    const scrollBtn = document.getElementById('scrollTopBtn');
+    window.addEventListener('scroll', () => scrollBtn.classList.toggle('show', window.scrollY > 200));
+    scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    function handleBooking(e) {
+      e.preventDefault();
+      document.getElementById('booking-success').style.display = 'flex';
+      e.target.reset();
+      setTimeout(() => { document.getElementById('booking-success').style.display = 'none'; }, 6000);
+    }
+  </script>
 </body>
 </html>
