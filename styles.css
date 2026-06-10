@@ -940,5 +940,11 @@ nav a:not(.btn):hover { color: var(--saffron); }
     letter-spacing: 0.05em;
 }
 @media (max-width: 768px) {
-    .scroll-hint { display: block; }
+    .scroll-hint {
+        display: block;
+        color: var(--saffron);
+        opacity: 0.75;
+        font-size: 0.72rem;
+        font-weight: 600;
+    }
 }

@@ -97,7 +97,7 @@
           <p>Every group is different. We tailor itineraries to your pace, your devotion, and your family's needs.</p>
         </div>
       </div>
-      <p class="scroll-hint">← Swipe to see more →</p>
+      <p class="scroll-hint">↺ Auto-scrolling · swipe to browse</p>
     </section>
 
     <!-- ===== PHOTO GALLERY SECTION 1 ===== -->
@@ -148,7 +148,7 @@
           </div>
         </div>
       </div>
-      <p class="scroll-hint">← Swipe to explore →</p>
+      <p class="scroll-hint">↺ Auto-scrolling · swipe to browse</p>
     </section>
 
     <!-- ===== PHOTO GALLERY SECTION 2 ===== -->
@@ -195,7 +195,7 @@
           </div>
         </div>
       </div>
-      <p class="scroll-hint">← Swipe to explore →</p>
+      <p class="scroll-hint">↺ Auto-scrolling · swipe to browse</p>
     </section>
 
     <!-- ===== CULTURAL HERITAGE ===== -->
@@ -446,6 +446,101 @@
           document.getElementById('enquiry-success').style.display = 'none';
         }, 4000);
       }
+
+      // ===== MOBILE AUTO-SCROLL FOR GRIDS =====
+      // Only runs on touch/mobile screens (≤768px)
+      (function () {
+        const SCROLL_SPEED = 0.6;       // px per animation frame (~36px/s at 60fps)
+        const RESTART_DELAY = 2000;     // ms to wait after user stops touching before resuming
+        const MOBILE_BREAKPOINT = 768;
+
+        function isMobile() {
+          return window.innerWidth <= MOBILE_BREAKPOINT;
+        }
+
+        function initAutoScroll(el) {
+          if (el._autoScrollInit) return;
+          el._autoScrollInit = true;
+
+          let raf = null;
+          let isUserScrolling = false;
+          let restartTimer = null;
+          let lastScrollLeft = el.scrollLeft;
+
+          function step() {
+            if (!isMobile()) { raf = null; return; }
+            if (!isUserScrolling) {
+              el.scrollLeft += SCROLL_SPEED;
+              // Loop: when we reach the end, jump back to start
+              if (el.scrollLeft + el.clientWidth >= el.scrollWidth - 2) {
+                el.scrollLeft = 0;
+              }
+            }
+            raf = requestAnimationFrame(step);
+          }
+
+          function pause() {
+            isUserScrolling = true;
+            clearTimeout(restartTimer);
+          }
+
+          function scheduleResume() {
+            clearTimeout(restartTimer);
+            restartTimer = setTimeout(function () {
+              isUserScrolling = false;
+            }, RESTART_DELAY);
+          }
+
+          // Touch: pause on touchstart, schedule resume on touchend
+          el.addEventListener('touchstart', function () {
+            pause();
+          }, { passive: true });
+
+          el.addEventListener('touchend', function () {
+            scheduleResume();
+          }, { passive: true });
+
+          el.addEventListener('touchcancel', function () {
+            scheduleResume();
+          }, { passive: true });
+
+          // Mouse drag support (for dev tools mobile simulation)
+          el.addEventListener('mousedown', function () {
+            pause();
+          });
+          window.addEventListener('mouseup', function () {
+            if (isUserScrolling) scheduleResume();
+          });
+
+          // Start the loop
+          raf = requestAnimationFrame(step);
+
+          // If viewport resizes back to desktop, stop the RAF
+          window.addEventListener('resize', function () {
+            if (!isMobile() && raf) {
+              cancelAnimationFrame(raf);
+              raf = null;
+              el._autoScrollInit = false; // allow re-init on mobile resize
+            } else if (isMobile() && !raf) {
+              raf = requestAnimationFrame(step);
+            }
+          });
+        }
+
+        function setupAll() {
+          if (!isMobile()) return;
+          document.querySelectorAll('.grid, .why-grid').forEach(function (grid) {
+            initAutoScroll(grid);
+          });
+        }
+
+        // Run after DOM is ready
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', setupAll);
+        } else {
+          setupAll();
+        }
+      })();
     </script>
   </body>
 </html>
