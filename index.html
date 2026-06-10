@@ -9,7 +9,13 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
-  </head>
+    <style>
+    [data-fs-success] { display: none; }
+    [data-fs-error]:not(:empty) { display: block; color: #c0392b; margin-top: 0.5rem; font-size: 0.9rem; font-weight: 600; }
+    [data-fs-error]:empty { display: none; }
+    [data-fs-submit-btn]:disabled { opacity: 0.65; cursor: not-allowed; }
+  </style>
+</head>
   <body>
 
     <header>
@@ -245,22 +251,22 @@
         <div class="enquiry-form-container">
           <h3 class="enquiry-title">Quick Enquiry</h3>
           <p class="enquiry-subtitle">Send us a message and we'll get back to you soon.</p>
-          <form class="enquiry-form" action="https://formspree.io/f/mzdqazzl" method="POST" onsubmit="handleEnquiry(event)">
+          <form id="enquiry-form" class="enquiry-form" action="https://formspree.io/f/mzdqazzl" method="POST">
             <div class="form-group">
               <label for="enq-name">Full Name</label>
-              <input type="text" id="enq-name" name="name" placeholder="Your name" required />
+              <input type="text" id="enq-name" name="name" placeholder="Your name" data-fs-field required />
             </div>
             <div class="form-group">
               <label for="enq-phone">Phone Number</label>
-              <input type="tel" id="enq-phone" name="phone" placeholder="+91 XXXXX XXXXX" required />
+              <input type="tel" id="enq-phone" name="phone" placeholder="+91 XXXXX XXXXX" data-fs-field required />
             </div>
             <div class="form-group">
               <label for="enq-email">Email Address</label>
-              <input type="email" id="enq-email" name="email" placeholder="you@email.com" />
+              <input type="email" id="enq-email" name="email" placeholder="you@email.com" data-fs-field />
             </div>
             <div class="form-group">
               <label for="enq-tour">Tour Interest</label>
-              <select id="enq-tour" name="tour">
+              <select id="enq-tour" name="tour" data-fs-field>
                 <option value="">Select a tour...</option>
                 <option value="ram-mandir">Ram Mandir Darshan</option>
                 <option value="spiritual-morning">Spiritual Morning Tour</option>
@@ -271,12 +277,13 @@
             </div>
             <div class="form-group">
               <label for="enq-message">Message</label>
-              <textarea id="enq-message" name="message" placeholder="Tell us your travel plans..." rows="3"></textarea>
+              <textarea id="enq-message" name="message" placeholder="Tell us your travel plans..." data-fs-field rows="3"></textarea>
             </div>
-            <button type="submit" class="btn primary enquiry-submit">Send Enquiry</button>
-            <div id="enquiry-success" class="enquiry-success" style="display:none;">
+            <button type="submit" class="btn primary enquiry-submit" data-fs-submit-btn>Send Enquiry</button>
+            <div data-fs-success class="enquiry-success">
               ✅ Thank you! We'll contact you soon.
             </div>
+            <div data-fs-error class="enquiry-error"></div>
           </form>
         </div>
       </div>
@@ -437,37 +444,9 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
 
-      // Enquiry form — submits to Formspree via fetch, stays on page
-      async function handleEnquiry(e) {
-        e.preventDefault();
-        var form = e.target;
-        var btn  = form.querySelector('.enquiry-submit');
-        var successBox = document.getElementById('enquiry-success');
-
-        btn.textContent = 'Sending…';
-        btn.disabled = true;
-
-        try {
-          var response = await fetch(form.action, {
-            method: 'POST',
-            body: new FormData(form),
-            headers: { 'Accept': 'application/json' }
-          });
-
-          if (response.ok) {
-            form.reset();
-            successBox.style.display = 'block';
-            setTimeout(function() { successBox.style.display = 'none'; }, 4000);
-          } else {
-            alert('Something went wrong. Please call us directly at +91-88513 18990.');
-          }
-        } catch (err) {
-          alert('Network error. Please check your connection or call us at +91-88513 18990.');
-        } finally {
-          btn.textContent = 'Send Enquiry';
-          btn.disabled = false;
-        }
-      }
+      // Enquiry form — Formspree Ajax SDK
+      window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+      formspree('initForm', { formElement: '#enquiry-form', formId: 'mzdqazzl' });
 
       // ===== MOBILE AUTO-SCROLL FOR GRIDS =====
       // Only runs on touch/mobile screens (≤768px)
@@ -564,5 +543,6 @@
         }
       })();
     </script>
+      <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
   </body>
 </html>
