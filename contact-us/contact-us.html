@@ -7,6 +7,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&family=Open+Sans:wght@400;600&family=Cinzel:wght@700;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="contact-us-styles.css" />
+  <style>
+    [data-fs-success] { display: none; }
+    [data-fs-error]:not(:empty) { display: block; color: #c0392b; margin-top: 0.5rem; font-size: 0.9rem; font-weight: 600; }
+    [data-fs-error]:empty { display: none; }
+    [data-fs-submit-btn]:disabled { opacity: 0.65; cursor: not-allowed; }
+  </style>
 </head>
 <body>
 
@@ -92,24 +98,24 @@
       <div class="enquiry-form-container">
         <h2 class="form-title">Send Us an Enquiry</h2>
         <p class="form-subtitle">Fill in the form and our team will get back to you shortly.</p>
-        <form class="enquiry-form" action="https://formspree.io/f/mzdqazzl" method="POST" onsubmit="handleEnquiry(event)">
+        <form id="enquiry-form" class="enquiry-form" action="https://formspree.io/f/mzdqazzl" method="POST">
           <div class="form-row">
             <div class="form-group">
               <label for="enq-name">Full Name</label>
-              <input type="text" id="enq-name" name="name" placeholder="Your full name" required />
+              <input type="text" id="enq-name" name="name" placeholder="Your full name" data-fs-field required />
             </div>
             <div class="form-group">
               <label for="enq-phone">Phone Number</label>
-              <input type="tel" id="enq-phone" name="phone" placeholder="+91 XXXXX XXXXX" required />
+              <input type="tel" id="enq-phone" name="phone" placeholder="+91 XXXXX XXXXX" data-fs-field required />
             </div>
           </div>
           <div class="form-group">
             <label for="enq-email">Email Address</label>
-            <input type="email" id="enq-email" name="email" placeholder="you@email.com" />
+            <input type="email" id="enq-email" name="email" placeholder="you@email.com" data-fs-field />
           </div>
           <div class="form-group">
             <label for="enq-tour">Tour Interest</label>
-            <select id="enq-tour" name="tour">
+            <select id="enq-tour" name="tour" data-fs-field>
               <option value="">Select a tour...</option>
               <option value="ram-mandir">Ram Mandir Darshan</option>
               <option value="spiritual-morning">Spiritual Morning Tour</option>
@@ -122,23 +128,24 @@
           <div class="form-row">
             <div class="form-group">
               <label for="enq-date">Preferred Date</label>
-              <input type="date" id="enq-date" name="date" />
+              <input type="date" id="enq-date" name="date" data-fs-field />
             </div>
             <div class="form-group">
               <label for="enq-persons">Number of Persons</label>
-              <input type="number" id="enq-persons" name="persons" placeholder="e.g. 4" min="1" />
+              <input type="number" id="enq-persons" name="persons" data-fs-field placeholder="e.g. 4" min="1" />
             </div>
           </div>
           <div class="form-group">
             <label for="enq-message">Message</label>
-            <textarea id="enq-message" name="message" placeholder="Tell us about your travel plans, special requirements, or any questions..." rows="4"></textarea>
+            <textarea id="enq-message" name="message" placeholder="Tell us about your travel plans, special requirements, or any questions..." rows="4" data-fs-field></textarea>
           </div>
-          <button type="submit" class="btn primary submit-btn">
+          <button type="submit" class="btn primary submit-btn" data-fs-submit-btn>
             <i class="fa-solid fa-paper-plane"></i> Send Enquiry
           </button>
-          <div id="enquiry-success" class="enquiry-success" style="display:none;">
+          <div data-fs-success class="enquiry-success">
             <i class="fa-solid fa-circle-check"></i> Thank you! We'll contact you within 24 hours.
           </div>
+          <div data-fs-error class="enquiry-error"></div>
         </form>
       </div>
     </div>
@@ -237,12 +244,10 @@
     const scrollBtn = document.getElementById('scrollTopBtn');
     window.addEventListener('scroll', () => scrollBtn.classList.toggle('show', window.scrollY > 200));
     scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-    function handleEnquiry(e) {
-      e.preventDefault();
-      document.getElementById('enquiry-success').style.display = 'flex';
-      e.target.reset();
-      setTimeout(() => { document.getElementById('enquiry-success').style.display = 'none'; }, 5000);
-    }
+    // Formspree Ajax SDK
+    window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+    formspree('initForm', { formElement: '#enquiry-form', formId: 'mzdqazzl' });
   </script>
+  <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 </body>
 </html>
