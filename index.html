@@ -97,7 +97,7 @@
           <p>Every group is different. We tailor itineraries to your pace, your devotion, and your family's needs.</p>
         </div>
       </div>
-      <p class="scroll-hint">↺ Auto-scrolling · swipe to browse</p>
+      
     </section>
 
     <!-- ===== PHOTO GALLERY SECTION 1 ===== -->
@@ -148,7 +148,7 @@
           </div>
         </div>
       </div>
-      <p class="scroll-hint">↺ Auto-scrolling · swipe to browse</p>
+      
     </section>
 
     <!-- ===== PHOTO GALLERY SECTION 2 ===== -->
@@ -195,7 +195,7 @@
           </div>
         </div>
       </div>
-      <p class="scroll-hint">↺ Auto-scrolling · swipe to browse</p>
+      
     </section>
 
     <!-- ===== CULTURAL HERITAGE ===== -->
@@ -447,123 +447,98 @@
         }, 4000);
       }
 
-      // ===== MOBILE INFINITE AUTO-SCROLL =====
+      // ===== MOBILE AUTO-SCROLL FOR GRIDS =====
+      // Only runs on touch/mobile screens (≤768px)
       (function () {
-        var SPEED = 0.8;            // px per frame
-        var PAUSE_MS = 2200;        // pause after user lifts finger
-        var BP = 768;               // mobile breakpoint
+        const SCROLL_SPEED = 0.6;       // px per animation frame (~36px/s at 60fps)
+        const RESTART_DELAY = 2000;     // ms to wait after user stops touching before resuming
+        const MOBILE_BREAKPOINT = 768;
 
-        function mobile() { return window.innerWidth <= BP; }
+        function isMobile() {
+          return window.innerWidth <= MOBILE_BREAKPOINT;
+        }
 
-        function setup(track) {
-          if (track._asReady) return;
-          track._asReady = true;
+        function initAutoScroll(el) {
+          if (el._autoScrollInit) return;
+          el._autoScrollInit = true;
 
-          // ---- 1. DISABLE snap & momentum so JS controls scroll fully ----
-          track.style.scrollSnapType    = 'none';
-          track.style.webkitOverflowScrolling = 'auto';
-          track.style.overflow          = 'hidden'; // hide scrollbar, still scrollable via JS
+          let raf = null;
+          let isUserScrolling = false;
+          let restartTimer = null;
+          let lastScrollLeft = el.scrollLeft;
 
-          // ---- 2. Clone children for seamless infinite loop ----
-          var originals = Array.from(track.children);
-          originals.forEach(function (child) {
-            var clone = child.cloneNode(true);
-            clone.setAttribute('aria-hidden', 'true');
-            track.appendChild(clone);
-          });
-
-          // ---- 3. Measure the width of ONE full set ----
-          // We'll recalculate after images load, but start immediately
-          var setWidth = 0;
-          function measureSet() {
-            var gap = parseFloat(getComputedStyle(track).gap) || 16;
-            var children = Array.from(track.children).slice(0, originals.length);
-            setWidth = children.reduce(function (sum, el) {
-              return sum + el.offsetWidth + gap;
-            }, 0);
-          }
-          measureSet();
-
-          // ---- 4. Animation state ----
-          var pos = 0;
-          var paused = false;
-          var timer = null;
-          var raf = null;
-
-          function tick() {
-            if (!mobile()) { raf = null; return; }
-            if (!paused) {
-              pos += SPEED;
-              if (setWidth > 0 && pos >= setWidth) {
-                pos -= setWidth;  // seamless wrap
+          function step() {
+            if (!isMobile()) { raf = null; return; }
+            if (!isUserScrolling) {
+              el.scrollLeft += SCROLL_SPEED;
+              // Loop: when we reach the end, jump back to start
+              if (el.scrollLeft + el.clientWidth >= el.scrollWidth - 2) {
+                el.scrollLeft = 0;
               }
-              track.scrollLeft = pos;
             }
-            raf = requestAnimationFrame(tick);
+            raf = requestAnimationFrame(step);
           }
 
           function pause() {
-            paused = true;
-            clearTimeout(timer);
-            // Re-enable snap briefly so user's swipe snaps to card
-            track.style.scrollSnapType = 'x mandatory';
+            isUserScrolling = true;
+            clearTimeout(restartTimer);
           }
 
-          function resume() {
-            clearTimeout(timer);
-            timer = setTimeout(function () {
-              // Sync pos with wherever user swiped to
-              pos = track.scrollLeft % (setWidth || 1);
-              track.style.scrollSnapType = 'none';
-              paused = false;
-            }, PAUSE_MS);
+          function scheduleResume() {
+            clearTimeout(restartTimer);
+            restartTimer = setTimeout(function () {
+              isUserScrolling = false;
+            }, RESTART_DELAY);
           }
 
-          track.addEventListener('touchstart', pause,  { passive: true });
-          track.addEventListener('touchend',   resume, { passive: true });
-          track.addEventListener('touchcancel',resume, { passive: true });
-          track.addEventListener('mousedown',  pause);
-          window.addEventListener('mouseup', function () { if (paused) resume(); });
+          // Touch: pause on touchstart, schedule resume on touchend
+          el.addEventListener('touchstart', function () {
+            pause();
+          }, { passive: true });
 
-          // Re-measure after images load
-          window.addEventListener('load', function () {
-            measureSet();
-            pos = 0;
+          el.addEventListener('touchend', function () {
+            scheduleResume();
+          }, { passive: true });
+
+          el.addEventListener('touchcancel', function () {
+            scheduleResume();
+          }, { passive: true });
+
+          // Mouse drag support (for dev tools mobile simulation)
+          el.addEventListener('mousedown', function () {
+            pause();
+          });
+          window.addEventListener('mouseup', function () {
+            if (isUserScrolling) scheduleResume();
           });
 
-          // Start
-          raf = requestAnimationFrame(tick);
+          // Start the loop
+          raf = requestAnimationFrame(step);
 
-          // Stop on desktop resize, restart on mobile
+          // If viewport resizes back to desktop, stop the RAF
           window.addEventListener('resize', function () {
-            measureSet();
-            if (!mobile()) {
-              // Restore original CSS so desktop layout is untouched
-              cancelAnimationFrame(raf); raf = null;
-              track.style.scrollSnapType = '';
-              track.style.webkitOverflowScrolling = '';
-              track.style.overflow = '';
-              track.scrollLeft = 0;
-              track._asReady = false;
-              // Remove clones
-              Array.from(track.children).slice(originals.length).forEach(function (c) {
-                track.removeChild(c);
-              });
-            } else if (!raf) {
-              raf = requestAnimationFrame(tick);
+            if (!isMobile() && raf) {
+              cancelAnimationFrame(raf);
+              raf = null;
+              el._autoScrollInit = false; // allow re-init on mobile resize
+            } else if (isMobile() && !raf) {
+              raf = requestAnimationFrame(step);
             }
           });
         }
 
-        function init() {
-          if (!mobile()) return;
-          document.querySelectorAll('.grid, .why-grid').forEach(setup);
+        function setupAll() {
+          if (!isMobile()) return;
+          document.querySelectorAll('.grid, .why-grid').forEach(function (grid) {
+            initAutoScroll(grid);
+          });
         }
 
+        // Run after DOM is ready
         if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', init);
+          document.addEventListener('DOMContentLoaded', setupAll);
         } else {
-          init();
+          setupAll();
         }
       })();
     </script>
