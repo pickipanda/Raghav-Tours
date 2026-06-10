@@ -872,9 +872,8 @@ nav a:not(.btn):hover { color: var(--saffron); }
     .grid {
         display: flex;
         flex-wrap: nowrap;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
+        overflow-x: hidden;
+        scroll-snap-type: none;
         gap: 1rem;
         padding-bottom: 0.8rem;
         scrollbar-width: none;
@@ -894,9 +893,8 @@ nav a:not(.btn):hover { color: var(--saffron); }
     .why-grid {
         display: flex;
         flex-wrap: nowrap;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
+        overflow-x: hidden;
+        scroll-snap-type: none;
         gap: 1rem;
         padding-bottom: 0.8rem;
         scrollbar-width: none;
